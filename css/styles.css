@@ -1,0 +1,147 @@
+:root {
+    --color-primary: #0000FF;          
+    --color-primary-hover: #00008B;    
+    --color-text-primary: #FFFFFF;     
+    --color-secondary: #070606; 
+    --color-border: #ddd; 
+    --color-grey:  #333;    
+}
+
+section {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 10px 20px;
+    text-align: center;
+    max-width: 900px;
+}
+
+header {
+    background: var(--color-secondary);
+    color: var(--color-text-primary);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.logo {
+    width: 25px;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: text-decoration 0.3s ease;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main h1 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+main p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-grey);
+}
+
+/* Button styling */
+button {
+    padding: 10px 25px;
+    margin-top: 15px;
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Sections styling */
+#recipe-search, #meal-planner, #shopping-list {
+    background-color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: left;
+    color: var(--color-grey);
+}
+
+/* Recipe search input and button */
+#recipe-search input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+#recipe-search button {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+/* Search results container */
+#searchResults {
+    margin-top: 20px;
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+    padding: 15px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    #recipe-search input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    #recipe-search button {
+        width: 100%;
+    }
+}
