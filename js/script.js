@@ -1,3 +1,26 @@
+// Load saved data from localStorage on page load
+window.addEventListener("DOMContentLoaded", () => {
+    // Load meal plan
+    const savedMealPlan = localStorage.getItem("mealPlan");
+    if (savedMealPlan) {
+        mealPlan = JSON.parse(savedMealPlan);
+        updateMealPlanUI();
+    }
+
+    // Load manual shopping items
+    const savedShoppingItems = localStorage.getItem("manualShoppingItems");
+    if (savedShoppingItems) {
+        manualShoppingItems = JSON.parse(savedShoppingItems);
+        updateShoppingListUI();
+    }
+});
+
+// Save mealPlan and manualShoppingItems to localStorage helper function
+function saveToLocalStorage() {
+    localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
+    localStorage.setItem("manualShoppingItems", JSON.stringify(manualShoppingItems));
+}
+
 // EVENT LISTENER for recipe search
 document.getElementById("searchButton").addEventListener("click", searchRecipes);
 
@@ -77,7 +100,6 @@ function displayResults(recipes) {
         resultsDiv.appendChild(recipeCard);
     });
 
-    
     document.querySelectorAll(".add-to-mealplan").forEach(button => {
         button.addEventListener("click", () => {
             const recipe = JSON.parse(button.getAttribute("data-recipe"));
@@ -85,7 +107,6 @@ function displayResults(recipes) {
         });
     });
 }
-
 
 function updateDateTime() {
     const now = new Date();
@@ -116,6 +137,7 @@ function addToMealPlan(recipe) {
     mealPlan.push(recipe);
     updateMealPlanUI();
     updateShoppingListUI();
+    saveToLocalStorage(); // <-- Save after adding
 }
 
 function updateMealPlanUI() {
@@ -150,6 +172,7 @@ function removeFromMealPlan(id) {
     mealPlan = mealPlan.filter(recipe => recipe.id != id);
     updateMealPlanUI();
     updateShoppingListUI();
+    saveToLocalStorage(); // <-- Save after removing
 }
 
 function updateShoppingListUI() {
@@ -192,4 +215,6 @@ addShoppingBtn.addEventListener("click", () => {
     }
     shoppingInput.value = "";
     updateShoppingListUI();
+    saveToLocalStorage(); // <-- Save after adding manual item
 });
+
